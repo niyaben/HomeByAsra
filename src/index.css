@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color system — blueprint / site-plan direction */
+  --color-ink: #1B1F23;        /* charcoal-navy, primary dark */
+  --color-ink-soft: #2B313A;   /* lifted panels on dark */
+  --color-stone: #EDE7DD;      /* warm off-white background */
+  --color-stone-deep: #E1D9C9; /* deeper stone for section breaks */
+  --color-paper: #FBF9F5;      /* card/white surface */
+  --color-brass: #B08D57;      /* signature gold accent, from logo */
+  --color-brass-deep: #8C6A3B;
+  --color-brick: #8C3B2E;      /* secondary accent, masonry */
+  --color-slate: #4A5560;      /* muted text / rules */
+  --color-slate-light: #7C8791;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-stone);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-brass);
+  color: var(--color-ink);
+}
+
+/* Blueprint tick-mark corner, used as a signature framing device */
+.blueprint-frame {
+  position: relative;
+}
+.blueprint-frame::before,
+.blueprint-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-brass);
+}
+.blueprint-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.blueprint-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.coord-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--color-brass-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
